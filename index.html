@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>OptiProjects</title>
+    <title>JosebloxTools</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -16,373 +17,632 @@
         :root {
             --accent: #3d9990;
             --accent-hover: #4eb3a9;
-            --bg-panel: rgba(7, 20, 18, 0.78);
-            --bg-card: rgba(14, 32, 29, 0.82);
-            --border: rgba(65, 180, 170, 0.28);
+
+            --panel: rgba(5, 20, 18, 0.82);
+            --panel-dark: rgba(3, 14, 12, 0.88);
+
+            --border: rgba(65, 180, 170, 0.30);
+
+            --text: #ffffff;
+            --muted: #aebbb8;
         }
 
+
+        /* ==============================
+           FONDO
+        ============================== */
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
+
             min-height: 100vh;
-            color: white;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: var(--text);
 
             background:
+
                 linear-gradient(
                     rgba(3, 12, 10, 0.68),
                     rgba(3, 12, 10, 0.82)
                 ),
+
                 url("background.avif");
 
-            background-position: center;
             background-size: cover;
+            background-position: center;
             background-attachment: fixed;
+
         }
 
-        /* =========================
-           CABECERA
-        ========================= */
+
+        /* ==============================
+           HEADER
+        ============================== */
 
         header {
+
             height: 84px;
+
             display: flex;
+
             align-items: center;
-            padding: 12px 28px;
+
+            padding:
+                10px
+                25px;
+
         }
 
+
         .logo {
+
             width: 230px;
+
             max-height: 65px;
+
             object-fit: contain;
+
             object-position: left center;
 
             filter:
-                drop-shadow(0 0 5px rgba(0, 255, 240, 0.5));
+                drop-shadow(
+                    0 0 5px
+                    rgba(0, 255, 240, 0.45)
+                );
 
-            transition: 0.2s;
         }
 
-        .logo:hover {
-            transform: scale(1.03);
-        }
 
-        /* =========================
-           ESTRUCTURA
-        ========================= */
+        /* ==============================
+           ESTRUCTURA PRINCIPAL
+        ============================== */
 
         .layout {
+
             display: flex;
+
             gap: 25px;
-            padding: 0 25px 35px;
+
+            padding:
+                0 25px 30px;
+
         }
 
-        /* =========================
-           MENU
-        ========================= */
+
+        /* ==============================
+           MENU PRINCIPAL
+        ============================== */
 
         .sidebar {
+
             width: 210px;
+
             min-width: 210px;
 
-            background: var(--bg-panel);
-            border: 1px solid var(--border);
-            border-radius: 10px;
+            height: fit-content;
 
             padding: 10px;
 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background:
+                var(--panel);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 10px;
+
+            backdrop-filter:
+                blur(12px);
 
             box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.35);
+                0 8px 25px
+                rgba(0,0,0,0.35);
+
         }
 
+
         .category {
+
             width: 100%;
 
-            padding: 13px 10px;
-            margin-bottom: 4px;
-
             border: none;
-            border-radius: 6px;
 
             background: transparent;
+
             color: white;
 
+            padding: 13px 10px;
+
+            margin-bottom: 4px;
+
+            border-radius: 6px;
+
             font-size: 15px;
-            font-weight: 500;
 
             cursor: pointer;
 
-            transition:
-                background 0.2s,
-                transform 0.2s;
+            transition: 0.2s;
+
         }
+
 
         .category:hover {
-            background: rgba(61, 153, 144, 0.28);
+
+            background:
+                rgba(61,153,144,0.28);
+
         }
+
 
         .category.active {
-            background: var(--accent);
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+
+            background:
+                var(--accent);
+
         }
 
-        .category:active {
-            transform: scale(0.98);
-        }
 
-        /* =========================
+        /* ==============================
            CONTENIDO
-        ========================= */
+        ============================== */
 
         main {
+
             flex: 1;
+
             max-width: 1100px;
+
+            min-width: 0;
+
         }
 
-        /* BUSCADOR */
+
+        /* ==============================
+           BUSCADOR
+        ============================== */
 
         .search {
+
             width: 100%;
 
-            padding: 14px 18px;
+            padding:
+                14px 18px;
+
+            margin-bottom: 20px;
+
+            border:
+                1px solid var(--border);
 
             border-radius: 10px;
-            border: 1px solid var(--border);
+
             outline: none;
 
-            background: rgba(3, 16, 14, 0.82);
+            background:
+                rgba(3,16,14,0.82);
+
             color: white;
 
             font-size: 15px;
 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter:
+                blur(12px);
 
-            margin-bottom: 20px;
-
-            transition: border 0.2s;
         }
 
-        .search:focus {
-            border-color: rgba(80, 200, 190, 0.7);
-        }
 
         .search::placeholder {
+
             color: #aaa;
+
         }
 
-        /* PANEL */
+
+        .search:focus {
+
+            border-color:
+                rgba(80,200,190,0.7);
+
+        }
+
+
+        /* ==============================
+           PANEL
+        ============================== */
 
         .panel {
-            background: var(--bg-panel);
 
-            border: 1px solid var(--border);
+            background:
+                var(--panel);
+
+            border:
+                1px solid var(--border);
+
             border-radius: 10px;
 
             padding: 20px;
 
-            min-height: 300px;
-
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter:
+                blur(12px);
 
             box-shadow:
-                0 8px 30px rgba(0, 0, 0, 0.3);
+                0 8px 30px
+                rgba(0,0,0,0.3);
+
         }
+
 
         .title {
+
             font-size: 22px;
-            margin-bottom: 20px;
+
+            margin-bottom: 18px;
+
         }
 
-        /* =========================
-           TARJETAS
-        ========================= */
 
-        .projects {
-            display: grid;
+        /* ==============================
+           LISTA DE PROYECTOS
+        ============================== */
 
-            grid-template-columns:
-                repeat(auto-fill, minmax(220px, 1fr));
-
-            gap: 15px;
-        }
-
-        .card {
-            background: var(--bg-card);
-
-            border: 1px solid rgba(60, 160, 150, 0.20);
-
-            border-radius: 8px;
-
-            padding: 17px;
-
-            min-height: 175px;
+        .project-list {
 
             display: flex;
+
             flex-direction: column;
 
-            transition:
-                transform 0.2s,
-                border 0.2s,
-                background 0.2s;
+            gap: 6px;
+
         }
 
-        .card:hover {
-            transform: translateY(-4px);
 
-            background: rgba(20, 45, 41, 0.9);
+        .project-row {
 
-            border-color: rgba(70, 190, 180, 0.45);
-        }
+            width: 100%;
 
-        .card h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
+            min-height: 42px;
 
-        .card p {
-            color: #b9c3c1;
-            font-size: 14px;
-            line-height: 1.4;
+            display: flex;
 
-            margin-bottom: 15px;
-        }
+            align-items: center;
 
-        .tag {
-            display: inline-block;
+            gap: 10px;
 
-            width: fit-content;
-
-            font-size: 11px;
-            font-weight: bold;
-
-            padding: 4px 7px;
-
-            border-radius: 4px;
-
-            background: rgba(65, 150, 142, 0.45);
-
-            margin-bottom: 10px;
-        }
-
-        .button {
-            display: inline-block;
-
-            width: fit-content;
-
-            margin-top: auto;
-
-            padding: 9px 14px;
+            padding:
+                8px 10px;
 
             border-radius: 5px;
 
-            background: var(--accent);
+            background:
+                rgba(8,28,25,0.75);
+
+            border:
+                1px solid
+                rgba(60,160,150,0.12);
+
+            cursor: pointer;
+
+            transition:
+                background 0.18s,
+                border 0.18s,
+                transform 0.18s;
+
+        }
+
+
+        .project-row:hover {
+
+            background:
+                rgba(39,75,69,0.9);
+
+            border-color:
+                rgba(70,190,180,0.35);
+
+            transform:
+                translateX(3px);
+
+        }
+
+
+        .project-name {
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+        }
+
+
+        .tag {
+
+            display: inline-block;
+
+            padding:
+                3px 6px;
+
+            border-radius: 3px;
+
+            background:
+                rgba(65,150,142,0.45);
+
+            color: white;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* ==============================
+           DETALLES
+        ============================== */
+
+        .details {
+
+            max-width: 850px;
+
+            margin: auto;
+
+        }
+
+
+        .back-button {
+
+            display: inline-block;
+
+            margin-bottom: 18px;
+
+            padding:
+                9px 14px;
+
+            border: none;
+
+            border-radius: 5px;
+
+            background:
+                rgba(25,50,46,0.9);
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+        }
+
+
+        .back-button:hover {
+
+            background:
+                var(--accent);
+
+        }
+
+
+        .details-title {
+
+            font-size: 27px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .details-tags {
+
+            display: flex;
+
+            gap: 7px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .details-description {
+
+            color: var(--muted);
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .info-box {
+
+            padding: 17px;
+
+            margin-bottom: 20px;
+
+            background:
+                rgba(3,18,16,0.72);
+
+            border:
+                1px solid
+                rgba(60,160,150,0.20);
+
+            border-radius: 7px;
+
+        }
+
+
+        .info-box h3 {
+
+            margin-bottom: 10px;
+
+            font-size: 17px;
+
+        }
+
+
+        .info-box p {
+
+            color: var(--muted);
+
+            line-height: 1.5;
+
+            font-size: 14px;
+
+        }
+
+
+        .download-button {
+
+            display: inline-block;
+
+            padding:
+                12px 20px;
+
+            background:
+                var(--accent);
 
             color: white;
 
             text-decoration: none;
 
-            font-size: 14px;
+            border-radius: 6px;
+
+            font-weight: bold;
 
             transition: 0.2s;
+
         }
 
-        .button:hover {
-            background: var(--accent-hover);
+
+        .download-button:hover {
+
+            background:
+                var(--accent-hover);
+
+            transform:
+                translateY(-2px);
+
         }
 
-        /* =========================
+
+        /* ==============================
            SIN RESULTADOS
-        ========================= */
+        ============================== */
 
         .no-results {
-            color: #aaa;
+
             text-align: center;
+
+            color: #aaa;
 
             padding: 50px 10px;
 
-            font-size: 15px;
         }
 
-        /* =========================
-           PIE
-        ========================= */
+
+        /* ==============================
+           FOOTER
+        ============================== */
 
         footer {
+
             text-align: center;
 
-            color: rgba(255, 255, 255, 0.55);
+            color:
+                rgba(255,255,255,0.5);
 
             font-size: 12px;
 
-            padding: 10px 20px 25px;
+            padding:
+                10px 20px 25px;
+
         }
 
-        /* =========================
-           MÓVIL
-        ========================= */
+
+        /* ==============================
+           MOVIL
+        ============================== */
 
         @media (max-width: 700px) {
 
-            header {
-                justify-content: center;
-            }
-
-            .logo {
-                width: 200px;
-            }
-
             .layout {
+
                 flex-direction: column;
-                padding: 0 15px 25px;
+
+                padding:
+                    0 15px 25px;
+
             }
+
 
             .sidebar {
+
                 width: 100%;
+
                 min-width: 0;
 
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+
+                grid-template-columns:
+                    1fr 1fr;
+
                 gap: 4px;
+
             }
+
 
             .category {
+
                 margin: 0;
+
             }
 
-            .projects {
-                grid-template-columns: 1fr;
+
+            .details-title {
+
+                font-size: 22px;
+
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- =========================
-         CABECERA
-    ========================= -->
+
+    <!-- ==================================
+         LOGO
+    =================================== -->
 
     <header>
 
         <img
             src="logo.png"
-            alt="OptiProjects"
+            alt="JosebloxTools"
             class="logo"
         >
 
     </header>
 
 
-    <!-- =========================
-         CONTENIDO
-    ========================= -->
+    <!-- ==================================
+         ESTRUCTURA
+    =================================== -->
 
     <div class="layout">
 
-        <!-- MENU -->
+
+        <!-- ===============================
+             MENU
+        ================================ -->
 
         <aside class="sidebar">
 
@@ -393,6 +653,7 @@
                 🎮 Descargas de juegos
             </button>
 
+
             <button
                 class="category"
                 onclick="changeCategory('Juegos', this)"
@@ -400,12 +661,14 @@
                 🌐 Juegos sin descargar
             </button>
 
+
             <button
                 class="category"
                 onclick="changeCategory('Emuladores', this)"
             >
                 🕹️ Emuladores
             </button>
+
 
             <button
                 class="category"
@@ -417,9 +680,14 @@
         </aside>
 
 
-        <!-- CONTENIDO PRINCIPAL -->
+        <!-- ===============================
+             CONTENIDO
+        ================================ -->
 
         <main>
+
+
+            <!-- BUSCADOR -->
 
             <input
                 id="search"
@@ -431,22 +699,14 @@
             >
 
 
+            <!-- PANEL -->
+
             <section class="panel">
 
-                <h2
-                    id="title"
-                    class="title"
-                >
-                    🎮 Descargas de juegos
-                </h2>
-
-
-                <div
-                    id="projects"
-                    class="projects"
-                ></div>
+                <div id="content"></div>
 
             </section>
+
 
         </main>
 
@@ -454,95 +714,163 @@
 
 
     <footer>
-        OptiProjects © 2026
+
+        JosebloxTools © 2026
+
     </footer>
+
 
 
     <script>
 
-        /* =========================
-           PROYECTOS
-        ========================= */
+
+        /* =================================
+           DATOS DE LOS PROYECTOS
+        ================================= */
 
         const projects = {
+
 
             Descargas: [
 
                 {
                     name: "Minecraft",
-                    description: "Minecraft para PC.",
-                    tag: "PC",
-                    link: "#"
+                    tags: ["PC"],
+                    description:
+                        "Minecraft para PC.",
+                    version:
+                        "Versión 1.0",
+                    requirements:
+                        "Windows 10/11",
+                    download:
+                        "#"
                 },
+
 
                 {
                     name: "Plants vs Zombies",
-                    description: "Versión para PC.",
-                    tag: "PC",
-                    link: "#"
+                    tags: ["PC"],
+                    description:
+                        "Plants vs Zombies para PC.",
+                    version:
+                        "Versión 1.0",
+                    requirements:
+                        "Windows",
+                    download:
+                        "#"
+                },
+
+
+                {
+                    name: "Juego de prueba",
+                    tags: ["PC", "PORT"],
+                    description:
+                        "Proyecto de prueba para la web.",
+                    version:
+                        "1.0",
+                    requirements:
+                        "Windows",
+                    download:
+                        "#"
                 }
 
             ],
+
 
 
             Juegos: [
 
                 {
                     name: "Juego web 1",
+                    tags: ["WEB"],
                     description:
                         "Juega directamente desde el navegador.",
-                    tag: "WEB",
-                    link: "#"
+                    version:
+                        "1.0",
+                    requirements:
+                        "Navegador moderno",
+                    download:
+                        "#"
                 },
+
 
                 {
                     name: "Juego web 2",
+                    tags: ["HTML5"],
                     description:
-                        "Sin instalar nada.",
-                    tag: "HTML5",
-                    link: "#"
+                        "No necesitas instalar nada.",
+                    version:
+                        "1.0",
+                    requirements:
+                        "Chrome, Edge o Firefox",
+                    download:
+                        "#"
                 }
 
             ],
+
 
 
             Emuladores: [
 
                 {
                     name: "Emulador Retro",
+                    tags: ["RETRO"],
                     description:
                         "Emulador para juegos clásicos.",
-                    tag: "RETRO",
-                    link: "#"
+                    version:
+                        "1.0",
+                    requirements:
+                        "Windows",
+                    download:
+                        "#"
                 },
+
 
                 {
                     name: "Emulador Android",
+                    tags: ["ANDROID"],
                     description:
                         "Emulador para aplicaciones Android.",
-                    tag: "ANDROID",
-                    link: "#"
+                    version:
+                        "1.0",
+                    requirements:
+                        "Windows 10/11",
+                    download:
+                        "#"
                 }
 
             ],
+
 
 
             Utilidades: [
 
                 {
                     name: "Herramienta Windows",
+                    tags: ["WINDOWS"],
                     description:
                         "Utilidad para Windows.",
-                    tag: "WINDOWS",
-                    link: "#"
+                    version:
+                        "1.0",
+                    requirements:
+                        "Windows",
+                    download:
+                        "#"
                 },
+
 
                 {
                     name: "Herramienta de sistema",
+                    tags: ["UTILIDAD"],
                     description:
                         "Herramienta para mantenimiento.",
-                    tag: "UTILIDAD",
-                    link: "#"
+                    version:
+                        "1.0",
+                    requirements:
+                        "Windows",
+                    download:
+                        "#"
                 }
 
             ]
@@ -550,131 +878,318 @@
         };
 
 
-        /* =========================
-           VARIABLES
-        ========================= */
 
-        let currentCategory = "Descargas";
-
-
-        /* =========================
-           TÍTULOS
-        ========================= */
+        /* =================================
+           TITULOS
+        ================================= */
 
         const titles = {
 
-            Descargas: "🎮 Descargas de juegos",
+            Descargas:
+                "🎮 Descargas de juegos",
 
-            Juegos: "🌐 Juegos sin descargar",
+            Juegos:
+                "🌐 Juegos sin descargar",
 
-            Emuladores: "🕹️ Emuladores",
+            Emuladores:
+                "🕹️ Emuladores",
 
-            Utilidades: "🛠️ Utilidades"
+            Utilidades:
+                "🛠️ Utilidades"
 
         };
 
 
-        /* =========================
-           MOSTRAR PROYECTOS
-        ========================= */
+
+        /* =================================
+           CATEGORIA ACTUAL
+        ================================= */
+
+        let currentCategory =
+            "Descargas";
+
+
+
+        /* =================================
+           MOSTRAR LISTA
+        ================================= */
 
         function renderProjects(list) {
 
-            const container =
-                document.getElementById("projects");
 
-            container.innerHTML = "";
+            const content =
+                document.getElementById("content");
+
+
+            content.innerHTML = `
+
+                <h2 class="title">
+                    ${titles[currentCategory]}
+                </h2>
+
+                <div
+                    class="project-list"
+                    id="projectList"
+                ></div>
+
+            `;
+
+
+            const projectList =
+                document.getElementById(
+                    "projectList"
+                );
 
 
             if (list.length === 0) {
 
-                container.innerHTML = `
+                projectList.innerHTML = `
+
                     <div class="no-results">
+
                         🔎 No se encontraron proyectos.
+
                     </div>
+
                 `;
 
                 return;
+
             }
 
 
-            list.forEach(project => {
+            list.forEach((project, index) => {
 
-                const card =
+
+                const row =
                     document.createElement("div");
 
-                card.className = "card";
+
+                row.className =
+                    "project-row";
 
 
-                card.innerHTML = `
+                row.onclick = () => {
 
-                    <span class="tag">
-                        ${project.tag}
+                    showDetails(project);
+
+                };
+
+
+                let tags = "";
+
+
+                project.tags.forEach(tag => {
+
+                    tags += `
+                        <span class="tag">
+                            ${tag}
+                        </span>
+                    `;
+
+                });
+
+
+                row.innerHTML = `
+
+                    <span class="project-name">
+                        ${project.name}
                     </span>
 
-                    <h3>
-                        ${project.name}
-                    </h3>
-
-                    <p>
-                        ${project.description}
-                    </p>
-
-                    <a
-                        class="button"
-                        href="${project.link}"
-                    >
-                        Ver proyecto
-                    </a>
+                    ${tags}
 
                 `;
 
 
-                container.appendChild(card);
+                projectList.appendChild(row);
 
             });
 
         }
 
 
-        /* =========================
-           CAMBIAR CATEGORÍA
-        ========================= */
 
-        function changeCategory(category, button) {
+        /* =================================
+           MOSTRAR DETALLES
+        ================================= */
 
-            currentCategory = category;
+        function showDetails(project) {
 
 
-            document.getElementById("title")
-                .textContent = titles[category];
+            const content =
+                document.getElementById("content");
+
+
+            let tags = "";
+
+
+            project.tags.forEach(tag => {
+
+                tags += `
+                    <span class="tag">
+                        ${tag}
+                    </span>
+                `;
+
+            });
+
+
+            content.innerHTML = `
+
+                <div class="details">
+
+
+                    <button
+                        class="back-button"
+                        onclick="goBack()"
+                    >
+                        ← Volver
+                    </button>
+
+
+                    <h1 class="details-title">
+
+                        ${project.name}
+
+                    </h1>
+
+
+                    <div class="details-tags">
+
+                        ${tags}
+
+                    </div>
+
+
+                    <p class="details-description">
+
+                        ${project.description}
+
+                    </p>
+
+
+                    <div class="info-box">
+
+                        <h3>
+                            📦 Información
+                        </h3>
+
+                        <p>
+                            Versión:
+                            ${project.version}
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h3>
+                            💻 Requisitos
+                        </h3>
+
+                        <p>
+                            ${project.requirements}
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        class="download-button"
+                        href="${project.download}"
+                    >
+                        ⬇️ Descargar
+                    </a>
+
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        /* =================================
+           VOLVER A LA LISTA
+        ================================= */
+
+        function goBack() {
+
+            const query =
+                document
+                    .getElementById("search")
+                    .value
+                    .toLowerCase()
+                    .trim();
+
+
+            if (query) {
+
+                searchProjects();
+
+            } else {
+
+                renderProjects(
+                    projects[currentCategory]
+                );
+
+            }
+
+        }
+
+
+
+        /* =================================
+           CAMBIAR CATEGORIA
+        ================================= */
+
+        function changeCategory(
+            category,
+            button
+        ) {
+
+
+            currentCategory =
+                category;
 
 
             document
                 .querySelectorAll(".category")
                 .forEach(btn => {
 
-                    btn.classList.remove("active");
+                    btn.classList.remove(
+                        "active"
+                    );
 
                 });
 
 
-            button.classList.add("active");
+            button.classList.add(
+                "active"
+            );
 
 
-            document.getElementById("search").value = "";
+            document
+                .getElementById("search")
+                .value = "";
 
 
-            renderProjects(projects[category]);
+            renderProjects(
+                projects[category]
+            );
 
         }
 
 
-        /* =========================
+
+        /* =================================
            BUSCADOR
-        ========================= */
+        ================================= */
 
         function searchProjects() {
+
 
             const query =
                 document
@@ -685,37 +1200,50 @@
 
 
             const filtered =
-                projects[currentCategory].filter(project =>
-
-                    project.name
-                        .toLowerCase()
-                        .includes(query)
-
-                    ||
-
-                    project.description
-                        .toLowerCase()
-                        .includes(query)
-
-                    ||
-
-                    project.tag
-                        .toLowerCase()
-                        .includes(query)
-
-                );
+                projects[currentCategory]
+                .filter(project => {
 
 
-            renderProjects(filtered);
+                    const name =
+                        project.name
+                            .toLowerCase();
+
+
+                    const tags =
+                        project.tags
+                            .join(" ")
+                            .toLowerCase();
+
+
+                    return (
+
+                        name.includes(query)
+
+                        ||
+
+                        tags.includes(query)
+
+                    );
+
+                });
+
+
+            renderProjects(
+                filtered
+            );
 
         }
 
 
-        /* =========================
-           INICIO
-        ========================= */
 
-        renderProjects(projects.Descargas);
+        /* =================================
+           INICIO
+        ================================= */
+
+        renderProjects(
+            projects.Descargas
+        );
+
 
     </script>
 
