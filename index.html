@@ -15,10 +15,6 @@
         }
 
         :root {
-            /* =========================
-               PALETA ROJA
-            ========================= */
-
             --accent: #c62828;
             --accent-hover: #e53935;
 
@@ -47,17 +43,18 @@
 
             color: var(--text);
 
-            background:
+            /*
+               FONDO ORIGINAL SIN BLUR
+               Y SIN OSCURECERLO POR CSS
+            */
 
-                linear-gradient(
-                    rgba(18, 3, 3, 0.68),
-                    rgba(18, 3, 3, 0.82)
-                ),
-
+            background-image:
                 url("background.avif");
 
             background-size: cover;
+
             background-position: center;
+
             background-attachment: fixed;
 
         }
@@ -139,7 +136,15 @@
 
             border-radius: 10px;
 
+            /*
+               EL BLUR SOLO AFECTA
+               AL PANEL
+            */
+
             backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
                 blur(12px);
 
             box-shadow:
@@ -232,7 +237,14 @@
 
             font-size: 15px;
 
+            /*
+               BLUR SOLO EN EL BUSCADOR
+            */
+
             backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
                 blur(12px);
 
         }
@@ -269,7 +281,14 @@
 
             padding: 20px;
 
+            /*
+               BLUR SOLO DEL PANEL
+            */
+
             backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
                 blur(12px);
 
             box-shadow:
@@ -739,13 +758,18 @@
 
                 {
                     name: "Minecraft",
+
                     tags: ["PC"],
+
                     description:
                         "Minecraft para PC.",
+
                     version:
                         "Versión 1.0",
+
                     requirements:
                         "Windows 10/11",
+
                     download:
                         "#"
                 },
@@ -753,13 +777,18 @@
 
                 {
                     name: "Plants vs Zombies",
+
                     tags: ["PC"],
+
                     description:
                         "Plants vs Zombies para PC.",
+
                     version:
                         "Versión 1.0",
+
                     requirements:
                         "Windows XP,1gb de RAM,17mb de almacenamiento,Directx 8",
+
                     download:
                         "https://www.mediafire.com/file/glko5mx5ht56qjd/Plantas+VS+Zombies+GOTY.7z/file"
                 },
@@ -767,13 +796,18 @@
 
                 {
                     name: "Juego de prueba",
+
                     tags: ["PC", "PORT"],
+
                     description:
                         "Proyecto de prueba para la web.",
+
                     version:
                         "1.0",
+
                     requirements:
                         "Windows",
+
                     download:
                         "#"
                 }
@@ -786,13 +820,18 @@
 
                 {
                     name: "Juego web 1",
+
                     tags: ["WEB"],
+
                     description:
                         "Juega directamente desde el navegador.",
+
                     version:
                         "1.0",
+
                     requirements:
                         "Navegador moderno",
+
                     download:
                         "#"
                 },
@@ -800,13 +839,18 @@
 
                 {
                     name: "Juego web 2",
+
                     tags: ["HTML5"],
+
                     description:
                         "No necesitas instalar nada.",
+
                     version:
                         "1.0",
+
                     requirements:
                         "Chrome, Edge o Firefox",
+
                     download:
                         "#"
                 }
@@ -819,13 +863,18 @@
 
                 {
                     name: "Emulador Retro",
+
                     tags: ["RETRO"],
+
                     description:
                         "Emulador para juegos clásicos.",
+
                     version:
                         "1.0",
+
                     requirements:
                         "Windows",
+
                     download:
                         "#"
                 },
@@ -833,13 +882,18 @@
 
                 {
                     name: "Emulador Android",
+
                     tags: ["ANDROID"],
+
                     description:
                         "Emulador para aplicaciones Android.",
+
                     version:
                         "1.0",
+
                     requirements:
                         "Windows 10/11",
+
                     download:
                         "#"
                 }
@@ -852,13 +906,18 @@
 
                 {
                     name: "Herramienta Windows",
+
                     tags: ["WINDOWS"],
+
                     description:
                         "Utilidad para Windows.",
+
                     version:
                         "1.0",
+
                     requirements:
                         "Windows",
+
                     download:
                         "#"
                 },
@@ -866,13 +925,18 @@
 
                 {
                     name: "Herramienta de sistema",
+
                     tags: ["UTILIDAD"],
+
                     description:
                         "Herramienta para mantenimiento.",
+
                     version:
                         "1.0",
+
                     requirements:
                         "Windows",
+
                     download:
                         "#"
                 }
@@ -962,7 +1026,7 @@
             }
 
 
-            list.forEach((project, index) => {
+            list.forEach((project) => {
 
 
                 const row =
