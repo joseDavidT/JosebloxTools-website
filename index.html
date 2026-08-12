@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Yo q se que poner XD</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            color: white;
+            background:
+                linear-gradient(rgba(5, 15, 12, .72), rgba(5, 15, 12, .82)),
+                url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=80")
+                center / cover fixed;
+        }
+
+        /* CABECERA */
+
+        header {
+            padding: 25px 40px 10px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow:
+                0 0 5px #00fff2,
+                0 0 10px #00fff2;
+        }
+
+        /* CONTENEDOR */
+
+        .layout {
+            display: flex;
+            gap: 25px;
+            padding: 10px 25px 40px;
+        }
+
+        /* MENU */
+
+        .sidebar {
+            width: 210px;
+            background: rgba(10, 20, 18, .72);
+            border: 1px solid rgba(0, 255, 220, .18);
+            border-radius: 10px;
+            padding: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,.4);
+            height: fit-content;
+        }
+
+        .category {
+            width: 100%;
+            padding: 13px 10px;
+            margin-bottom: 5px;
+            border: none;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .category:hover,
+        .category.active {
+            background: rgba(71, 150, 142, .65);
+        }
+
+        /* CONTENIDO */
+
+        main {
+            flex: 1;
+            max-width: 1000px;
+        }
+
+        .search {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,255,220,.2);
+            outline: none;
+
+            background: rgba(5, 15, 13, .75);
+            color: white;
+
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+
+            margin-bottom: 20px;
+        }
+
+        .search::placeholder {
+            color: #aaa;
+        }
+
+        .panel {
+            background: rgba(10, 20, 18, .72);
+            border: 1px solid rgba(0,255,220,.15);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .title {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* TARJETAS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background: rgba(20, 35, 32, .75);
+            border: 1px solid rgba(0,255,220,.12);
+            border-radius: 8px;
+            padding: 18px;
+            transition: .2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            background: rgba(30, 55, 50, .85);
+            border-color: rgba(0,255,220,.35);
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #bbb;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 11px;
+            padding: 4px 7px;
+            border-radius: 4px;
+            background: rgba(70, 150, 140, .45);
+            margin-bottom: 12px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 9px 15px;
+            border-radius: 5px;
+            background: #397f78;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        .button:hover {
+            background: #4aa79d;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            header {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">OptiProjects</div>
+</header>
+
+<div class="layout">
+
+    <!-- MENU LATERAL -->
+
+    <aside class="sidebar">
+
+        <button class="category active" onclick="changeCategory('Descargas')">
+            🎮 Descargas de juegos
+        </button>
+
+        <button class="category" onclick="changeCategory('Juegos')">
+            🌐 Juegos sin descargar
+        </button>
+
+        <button class="category" onclick="changeCategory('Emuladores')">
+            🕹️ Emuladores
+        </button>
+
+        <button class="category" onclick="changeCategory('Utilidades')">
+            🛠️ Utilidades
+        </button>
+
+    </aside>
+
+    <!-- CONTENIDO -->
+
+    <main>
+
+        <input
+            id="search"
+            class="search"
+            type="text"
+            placeholder="🔍 Buscar..."
+            oninput="searchProjects()"
+        >
+
+        <section class="panel">
+
+            <h2 id="title" class="title">
+                🎮 Descargas de juegos
+            </h2>
+
+            <div id="projects" class="projects"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+
+    const projects = {
+
+        Descargas: [
+            {
+                name: "Minecraft",
+                description: "Minecraft para PC.",
+                tag: "PC",
+                link: "#"
+            },
+            {
+                name: "Plants vs Zombies",
+                description: "Versión para PC.",
+                tag: "PC",
+                link: "#"
+            }
+        ],
+
+        Juegos: [
+            {
+                name: "Juego web 1",
+                description: "Juega directamente desde el navegador.",
+                tag: "WEB",
+                link: "#"
+            },
+            {
+                name: "Juego web 2",
+                description: "Sin instalar nada.",
+                tag: "HTML5",
+                link: "#"
+            }
+        ],
+
+        Emuladores: [
+            {
+                name: "Emulador Android",
+                description: "Emulador para ejecutar aplicaciones Android.",
+                tag: "ANDROID",
+                link: "#"
+            },
+            {
+                name: "Emulador Retro",
+                description: "Emulador para juegos clásicos.",
+                tag: "RETRO",
+                link: "#"
+            }
+        ],
+
+        Utilidades: [
+            {
+                name: "Herramienta 1",
+                description: "Utilidad para Windows.",
+                tag: "WINDOWS",
+                link: "#"
+            },
+            {
+                name: "Herramienta 2",
+                description: "Otra utilidad interesante.",
+                tag: "UTILIDAD",
+                link: "#"
+            }
+        ]
+
+    };
+
+
+    let currentCategory = "Descargas";
+
+
+    function renderProjects(list = projects[currentCategory]) {
+
+        const container = document.getElementById("projects");
+
+        container.innerHTML = "";
+
+        list.forEach(project => {
+
+            const card = document.createElement("div");
+
+            card.className = "card";
+
+            card.innerHTML = `
+                <span class="tag">${project.tag}</span>
+
+                <h3>${project.name}</h3>
+
+                <p>${project.description}</p>
+
+                <a class="button" href="${project.link}">
+                    Ver proyecto
+                </a>
+            `;
+
+            container.appendChild(card);
+
+        });
+
+    }
+
+
+    function changeCategory(category) {
+
+        currentCategory = category;
+
+        document.getElementById("title").textContent =
+            category === "Descargas"
+            ? "🎮 Descargas de juegos"
+            : category === "Juegos"
+            ? "🌐 Juegos sin descargar"
+            : category === "Emuladores"
+            ? "🕹️ Emuladores"
+            : "🛠️ Utilidades";
+
+
+        document.querySelectorAll(".category").forEach(button => {
+            button.classList.remove("active");
+        });
+
+        event.target.classList.add("active");
+
+        document.getElementById("search").value = "";
+
+        renderProjects();
+    }
+
+
+    function searchProjects() {
+
+        const query =
+            document.getElementById("search")
+            .value
+            .toLowerCase();
+
+        const filtered = projects[currentCategory].filter(project =>
+            project.name.toLowerCase().includes(query) ||
+            project.description.toLowerCase().includes(query) ||
+            project.tag.toLowerCase().includes(query)
+        );
+
+        renderProjects(filtered);
+    }
+
+
+    renderProjects();
+
+</script>
+
+</body>
+</html>
